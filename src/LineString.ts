@@ -21,7 +21,7 @@ export default class LineString implements Geometry {
     }
 
     isEmpty(): boolean {
-        return this.points.length==0;
+        return this.points.length == 0;
     }
 
     translate(dx: number, dy: number) {
@@ -35,7 +35,7 @@ export default class LineString implements Geometry {
     }
 
     clone(): LineString {
-        var points=new Array<Point>;
+        const points = new Array<Point>;
         this.points.forEach(point => {
             points.push(point.clone())
         });
