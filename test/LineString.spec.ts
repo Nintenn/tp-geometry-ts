@@ -44,6 +44,28 @@ describe("test LineString", () => {
         ]);
         expect(g.isEmpty()).to.be.false;
     });
+    it("should change the coordinates of the points for translate(dx,dy)", () => {
+        const g = new LineString([
+            new Point([3.0, 4.0]),
+            new Point([0.0, 0.0])
+        ]);
+        expect((g.getPointN(0)).x()).to.equal(3.0);
+        expect((g.getPointN(0)).y()).to.equal(4.0);
+
+        expect((g.getPointN(1)).x()).to.equal(0.0);
+        expect((g.getPointN(1)).y()).to.equal(0.0);
+        g.translate(1.0, -2.0);
+        expect((g.getPointN(0)).x()).to.equal(4.0);
+        expect((g.getPointN(0)).y()).to.equal(2.0);
+
+        expect((g.getPointN(1)).x()).to.equal(1.0);
+        expect((g.getPointN(1)).y()).to.equal(-2.0);
+    });
+    it("shouldn't change the empty linestring for translate(dx,dy", () => {
+        const g = new LineString();
+        g.translate(1.0, -2.0);
+        expect(g).to.deep.equal(new LineString());
+    });
 
 
 });

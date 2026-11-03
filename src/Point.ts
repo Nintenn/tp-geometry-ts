@@ -5,7 +5,7 @@ export default class Point implements Geometry {
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
-    this.coordinate = coordinate ? coordinate : [NaN,NaN];
+    this.coordinate = coordinate ? coordinate : [];
   }
 
   getType(): string {
@@ -17,15 +17,31 @@ export default class Point implements Geometry {
   }
 
   x(): number {
-    return this.coordinate[0];
+    if (this.isEmpty()) {
+      return NaN
+    } else {
+      return this.coordinate[0]
+    };
+
   }
 
   y(): number {
-    return this.coordinate[1];
+    if (this.isEmpty()) {
+      return NaN
+    } else {
+      return this.coordinate[1]
+    };
   }
 
   isEmpty(): boolean {
-    return this.coordinate[0] ? false : true;
+    return this.coordinate.length == 0;
+  }
+
+  translate(dx: number, dy: number) {
+    if (!this.isEmpty()) {
+      this.coordinate[0] += dx;
+      this.coordinate[1] += dy;
+    }
   }
 
 }
