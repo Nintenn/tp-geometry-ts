@@ -44,4 +44,12 @@ export default class Point implements Geometry {
     }
   }
 
+  clone(): Point {
+    if (!this.isEmpty()){
+      return new Point([this.x(),this.y()])
+    }else{
+      return new Point();
+    }
+  }
+
 }

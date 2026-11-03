@@ -48,5 +48,22 @@ describe("test Point", () => {
         expect(p).to.deep.equal(new Point());
     });
 
+    it("should create an identical point for clone() with independant coordinates",()=>{
+        const p = new Point([1.0,1.0]);
+        const q = p.clone();
+        q.translate(1.0,1.0);
+        expect(p.x()).to.equal(1.0);
+        expect(p.y()).to.equal(1.0);
+        expect(q.x()).to.equal(2.0);
+        expect(q.y()).to.equal(2.0);
+    });
+
+    it("should create another empty point for clone()",()=>{
+        const p =new Point();
+        const q=p.clone();
+        expect(p.isEmpty()).to.be.true;
+        expect(q.isEmpty()).to.be.true;
+    })
+
 });
 

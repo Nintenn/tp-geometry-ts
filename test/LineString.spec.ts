@@ -67,5 +67,30 @@ describe("test LineString", () => {
         expect(g).to.deep.equal(new LineString());
     });
 
+    it("should create another empty LineString for clone()",()=>{
+        const g = new LineString();
+        const h=g.clone();
+        expect(g.isEmpty()).to.be.true;
+        expect(h.isEmpty()).to.be.true;
+    });
+
+    it("should create another LineString with independant point coordinates for clone()", () => {
+        const g = new LineString([
+            new Point([3.0, 4.0]),
+            new Point([0.0, 0.0])
+        ]);
+        const h=g.clone();
+        h.translate(1.0, -2.0);
+        expect((g.getPointN(0)).x()).to.equal(3.0);
+        expect((g.getPointN(0)).y()).to.equal(4.0);
+        expect((g.getPointN(1)).x()).to.equal(0.0);
+        expect((g.getPointN(1)).y()).to.equal(0.0);
+        
+        expect((h.getPointN(0)).x()).to.equal(4.0);
+        expect((h.getPointN(0)).y()).to.equal(2.0);
+        expect((h.getPointN(1)).x()).to.equal(1.0);
+        expect((h.getPointN(1)).y()).to.equal(-2.0);
+    });
+
 
 });

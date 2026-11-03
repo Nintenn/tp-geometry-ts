@@ -33,4 +33,12 @@ export default class LineString implements Geometry {
 
         }
     }
+
+    clone(): LineString {
+        var points=new Array<Point>;
+        this.points.forEach(point => {
+            points.push(point.clone())
+        });
+        return new LineString(points);
+    }
 }
