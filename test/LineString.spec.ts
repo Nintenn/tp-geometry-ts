@@ -92,5 +92,20 @@ describe("test LineString", () => {
         expect((h.getPointN(1)).y()).to.equal(-2.0);
     });
 
+    it("should create the envelope that contains the linestring", () => {
+        const g = new LineString([
+            new Point([3.0, 4.0]),
+            new Point([0.0, 0.0]),
+            new Point([2.0, 5.0])
+        ]);
+        const e = g.getEnvelope();
+        expect(e.toString()).to.equal("0,0,3,5")
+    })
+
+    it("should create an envelope with the coordinates NaN", () => {
+        const g = new LineString();
+        const e = g.getEnvelope();
+        expect(e.toString()).to.equal("NaN,NaN,NaN,NaN")
+    })
 
 });

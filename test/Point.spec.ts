@@ -63,7 +63,18 @@ describe("test Point", () => {
         const q = p.clone();
         expect(p.isEmpty()).to.be.true;
         expect(q.isEmpty()).to.be.true;
-    })
+    });
+
+    it("should create an envelope with the coordinates of the point", () => {
+        const p = new Point([1.0, 2.0]);
+        const e = p.getEnvelope();
+        expect(e.toString()).to.equal("1,2,1,2");
+    });
+    it("should create an envelope with the coordinates NaN", () => {
+        const p = new Point();
+        const e = p.getEnvelope();
+        expect(e.toString()).to.equal("NaN,NaN,NaN,NaN");
+    });
 
 });
 
