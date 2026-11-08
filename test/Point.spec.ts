@@ -75,6 +75,14 @@ describe("test Point", () => {
         const e = p.getEnvelope();
         expect(e.toString()).to.equal("NaN,NaN,NaN,NaN");
     });
+    it("test as text for empty point", () => {
+        const p = new Point();
+        expect(p.asText()).to.equal("POINT EMPTY")
+    })
+    it("test as text for point", () => {
+        const p = new Point([2.0, 3.0]);
+        expect(p.asText()).to.equal("POINT (2 3)")
+    })
 
 });
 

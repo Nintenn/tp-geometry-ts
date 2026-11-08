@@ -107,5 +107,17 @@ describe("test LineString", () => {
         const e = g.getEnvelope();
         expect(e.toString()).to.equal("NaN,NaN,NaN,NaN")
     })
+    it("test as text for empty linestring", () => {
+        const p = new LineString();
+        expect(p.asText()).to.equal("LINESTRING EMPTY")
+    })
+    it("test as text for linestring", () => {
+        const g = new LineString([
+            new Point([3.0, 4.0]),
+            new Point([0.0, 0.0]),
+            new Point([2.0, 5.0])
+        ]);
+        expect(g.asText()).to.equal("LINESTRING(3 4,0 0,2 5,)")
+    })
 
 });
