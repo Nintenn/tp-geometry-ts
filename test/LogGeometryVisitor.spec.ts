@@ -8,17 +8,17 @@ describe("test LineString", () => {
     it("test visiting empty point", () => {
         const p = new Point();
         const v = new LogGeometryVisitor();
-        expect(v.visitPoint(p)).to.equal("Je suis un point vide.")
+        expect(p.accept(v)).to.equal("Je suis un point vide.")
     });
     it("test visiting point", () => {
         const p = new Point([3.0, 4.0]);
         const v = new LogGeometryVisitor();
-        expect(v.visitPoint(p)).to.equal("Je suis un point avec x=3 et y=4.")
+        expect(p.accept(v)).to.equal("Je suis un point avec x=3 et y=4.")
     });
     it("test visiting empty linestring", () => {
         const g = new LineString();
         const v = new LogGeometryVisitor();
-        expect(v.visitLineString(g)).to.equal("Je suis une polyligne vide.")
+        expect(g.accept(v)).to.equal("Je suis une polyligne vide.")
     });
     it("test visiting linestring", () => {
         const g = new LineString([
@@ -26,6 +26,6 @@ describe("test LineString", () => {
             new Point([0.0, 0.0])
         ]);
         const v = new LogGeometryVisitor();
-        expect(v.visitLineString(g)).to.equal("Je suis une polyligne définie par 2 point(s).")
+        expect(g.accept(v)).to.equal("Je suis une polyligne définie par 2 point(s).")
     });
 });
