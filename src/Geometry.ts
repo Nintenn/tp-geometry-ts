@@ -9,4 +9,5 @@ export default interface Geometry {
     getEnvelope(): Envelope;
     accept(visitor: GeometryVisitor): string;
     asText(): string;
+    getEnvelope(): Envelope;
 }
