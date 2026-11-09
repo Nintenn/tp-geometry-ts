@@ -35,7 +35,7 @@ export default class EnvelopeBuilder implements GeometryVisitor {
         if (!point.isEmpty()) {
             this.insert(point.getCoordinate())
         }
-        
+
     }
 
     visitLineString(lineString: LineString) {
@@ -44,6 +44,6 @@ export default class EnvelopeBuilder implements GeometryVisitor {
                 this.insert(lineString.getPointN(i).getCoordinate())
             }
         }
-        
+
     }
 }
